@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, bindActionCreators } from "@reduxjs/toolkit";
 
 import { reducer } from "./reducer";
 import { inc, dec, rdm, rst } from "./actions";
@@ -15,10 +15,10 @@ export const CounterScript = () => {
   };
   subscribe(update);
 
-  const incDispatch = () => dispatch(inc());
-  const decDispatch = () => dispatch(dec());
-  const rdmDispatch = (value) => dispatch(rdm(value));
-  const rstDispatch = () => dispatch(rst());
+  const incDispatch = bindActionCreators(inc, dispatch);
+  const decDispatch = bindActionCreators(dec, dispatch);
+  const rdmDispatch = bindActionCreators(rdm, dispatch);
+  const rstDispatch = bindActionCreators(rst, dispatch);
 
   // обробка кліків - вносим зміни в стор
   function incrValue() {
