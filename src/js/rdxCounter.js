@@ -15,10 +15,16 @@ export const CounterScript = () => {
   };
   subscribe(update);
 
-  const incDispatch = bindActionCreators(inc, dispatch);
-  const decDispatch = bindActionCreators(dec, dispatch);
-  const rdmDispatch = bindActionCreators(rdm, dispatch);
-  const rstDispatch = bindActionCreators(rst, dispatch);
+  const { incDispatch, decDispatch, rdmDispatch, rstDispatch } =
+    bindActionCreators(
+      {
+        incDispatch: inc,
+        decDispatch: dec,
+        rdmDispatch: rdm,
+        rstDispatch: rst,
+      },
+      dispatch
+    );
 
   // обробка кліків - вносим зміни в стор
   function incrValue() {
