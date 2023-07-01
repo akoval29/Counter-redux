@@ -1,7 +1,7 @@
 import { configureStore, bindActionCreators } from "@reduxjs/toolkit";
 
 import { reducer } from "./reducer";
-import { inc, dec, rdm, rst } from "./actions";
+import * as actions from "./actions";
 
 export const CounterScript = () => {
   const store = configureStore({ reducer });
@@ -15,30 +15,21 @@ export const CounterScript = () => {
   };
   subscribe(update);
 
-  const { incDispatch, decDispatch, rdmDispatch, rstDispatch } =
-    bindActionCreators(
-      {
-        incDispatch: inc,
-        decDispatch: dec,
-        rdmDispatch: rdm,
-        rstDispatch: rst,
-      },
-      dispatch
-    );
+  const { inc, dec, rdm, rst } = bindActionCreators(actions, dispatch);
 
   // обробка кліків - вносим зміни в стор
   function incrValue() {
-    incDispatch();
+    inc();
   }
   function decrValue() {
-    decDispatch();
+    dec();
   }
   function randomValue() {
     const value = Math.floor(Math.random() * 99);
-    rdmDispatch(value);
+    rdm(value);
   }
   function resetValue() {
-    rstDispatch();
+    rst();
   }
 
   // передаємо об'єкт з функціями !!!
