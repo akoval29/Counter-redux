@@ -6,26 +6,28 @@ import { inc, dec, rdm, rst } from "./actions";
 export const CounterScript = () => {
   const store = configureStore({ reducer });
 
+  // витягнули з store сущності. тепер викристання без store.dispatch ...
+  const { dispatch, subscribe, getState } = store;
+
   // підписка
   const update = () => {
-    document.querySelector(".counter__flag").textContent =
-      store.getState().value;
+    document.querySelector(".counter__flag").textContent = getState().value;
   };
-  store.subscribe(update);
+  subscribe(update);
 
   // обробка кліків - вносим зміни в стор
   function incrValue() {
-    store.dispatch(inc());
+    dispatch(inc());
   }
   function decrValue() {
-    store.dispatch(dec());
+    dispatch(dec());
   }
   function randomValue() {
     const tmp = Math.floor(Math.random() * 99);
-    store.dispatch(rdm(tmp));
+    dispatch(rdm(tmp));
   }
   function resetValue() {
-    store.dispatch(rst());
+    dispatch(rst());
   }
 
   // передаємо об'єкт з функціями !!!
