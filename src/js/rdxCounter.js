@@ -15,19 +15,24 @@ export const CounterScript = () => {
   };
   subscribe(update);
 
+  const incDispatch = () => dispatch(inc());
+  const decDispatch = () => dispatch(dec());
+  const rdmDispatch = (value) => dispatch(rdm(value));
+  const rstDispatch = () => dispatch(rst());
+
   // обробка кліків - вносим зміни в стор
   function incrValue() {
-    dispatch(inc());
+    incDispatch();
   }
   function decrValue() {
-    dispatch(dec());
+    decDispatch();
   }
   function randomValue() {
-    const tmp = Math.floor(Math.random() * 99);
-    dispatch(rdm(tmp));
+    const value = Math.floor(Math.random() * 99);
+    rdmDispatch(value);
   }
   function resetValue() {
-    dispatch(rst());
+    rstDispatch();
   }
 
   // передаємо об'єкт з функціями !!!
