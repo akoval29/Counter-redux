@@ -1,0 +1,68 @@
+@import url("./normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+.counter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+  width: 100%;
+  min-height: 100vh;
+  gap: 10px;
+  background: linear-gradient(to bottom left, orange 0%, white 50%, orange 100%);
+}
+.counter__app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  min-height: 250px;
+  background-color: #fff6e6;
+  margin: 30px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.counter__title {
+  font-family: "Roboto";
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.counter__flag {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffc966;
+  text-align: center;
+  line-height: 100px;
+  font-family: "Poppins";
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 40px;
+}
+.counter__controls {
+  display: flex;
+  justify-content: space-around;
+}
+.counter__btn {
+  padding: 7px 12px;
+  margin: 10px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid #cc8400;
+  transition: scale 0.3s ease-in-out;
+}
+.counter__btn:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  scale: 1.1;
+}
+.counter__btn:active {
+  background-color: #e69500;
+}/*# sourceMappingURL=style.css.map */
