@@ -1,16 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+const initialValue = 10;
+
 export const CounterScript = () => {
-  const reducer = (state = 10, action) => {
+  const reducer = (state = initialValue, action) => {
     switch (action.type) {
       case "INC":
-        return state + 1;
+        return { ...state, value: state.value + 1 };
       case "DEC":
-        return state - 1;
+        return { ...state, value: state.value - 1 };
       case "RST":
-        return action.payload;
+        return { ...state, value: action.payload };
       case "RDM":
-        return action.payload;
+        return { ...state, value: action.payload };
       default:
         return state;
     }
@@ -19,7 +21,8 @@ export const CounterScript = () => {
 
   // підписка
   const update = () => {
-    document.querySelector(".counter__flag").textContent = store.getState();
+    document.querySelector(".counter__flag").textContent =
+      store.getState().value;
   };
   store.subscribe(update);
 
