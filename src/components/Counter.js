@@ -1,24 +1,27 @@
-import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
-import * as actions from "../actions";
+import { inc, dec, rdm, rst } from "../actions";
 
-const Counter = ({ counter, inc, dec, rdm, rst }) => {
+import { useSelector, useDispatch } from "react-redux";
+
+const Counter = () => {
+  const counter = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+
   return (
     <section className="counter">
       <article className="counter__app">
         <div className="counter__title">Redux</div>
         <div className="counter__flag">{counter}</div>
         <div className="counter__controls">
-          <button className="counter__btn" onClick={inc}>
+          <button className="counter__btn" onClick={() => dispatch(inc())}>
             +1
           </button>
-          <button className="counter__btn" onClick={dec}>
+          <button className="counter__btn" onClick={() => dispatch(dec())}>
             -1
           </button>
-          <button className="counter__btn" onClick={rdm}>
+          <button className="counter__btn" onClick={() => dispatch(rdm())}>
             Random
           </button>
-          <button className="counter__btn" onClick={rst}>
+          <button className="counter__btn" onClick={() => dispatch(rst())}>
             Reset
           </button>
         </div>
@@ -27,14 +30,4 @@ const Counter = ({ counter, inc, dec, rdm, rst }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    counter: state.value,
-  };
-};
-
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators(actions, dispatch);
-// };
-
-export default connect(mapStateToProps, actions)(Counter);
+export default Counter;
