@@ -1,5 +1,4 @@
 import { inc, dec, rdm, rst } from "../actions";
-
 import { useSelector, useDispatch } from "react-redux";
 
 const Counter = () => {
@@ -29,5 +28,4 @@ const Counter = () => {
     </section>
   );
 };
-
 export default Counter;
